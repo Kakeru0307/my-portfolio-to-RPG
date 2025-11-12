@@ -19,7 +19,7 @@ module.exports = {
   		fontFamily: {
   			dq10: ['PixelMplus10', 'cursive'],
   			dq12: ['PixelMplus12', 'cursive'],
-        pokemon: ['Pokemon', 'cursive']
+        	pokemon: ['Pokemon', 'cursive']
   		},
   		colors: {
   			border: 'hsl(var(--border))',

@@ -19,6 +19,7 @@
   "dependencies": {
     "@tanstack/react-query": "^5.90.7",
     "@tanstack/react-router": "^1.135.2",
+    "@tanstack/react-table": "^8.21.3",
     "@tanstack/router-devtools": "^1.135.2",
     "framer-motion": "^12.23.24",
     "react": "^19.2.0",
