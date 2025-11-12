@@ -3,6 +3,7 @@ import { useState } from 'react';
 import ChatMessage from '@/components/ChatMessage';
 import SafeSuspense from '@/components/SafeSuspense';
 import { linkItems } from '@/constants/link';
+import { message } from '@/constants/message'
 
 const Home = () => {
   const [onTitle, setOnTitle] = useState('');
@@ -12,8 +13,6 @@ const Home = () => {
   const handleMouseLeave = () => {
     setOnTitle('');
   };
-  const message =
-    'こちらでは鈴木 翔の歴史を記録しています。\n隠し要素も存在してるかも？';
   return (
     <SafeSuspense>
       <div className="flex flex-col justify-between min-h-[calc(100vh-200px)] p-2">
@@ -48,7 +47,7 @@ const Home = () => {
           ))}
         </div>
         <div className="flex items-center space-x-2 border-2 p-2 rounded mt-auto z-20">
-          <ChatMessage message={message} />
+          <ChatMessage message={message.FirstContact} />
         </div>
       </div>
     </SafeSuspense>
