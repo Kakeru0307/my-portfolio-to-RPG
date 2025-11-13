@@ -1,30 +1,5 @@
-import { FaHtml5, FaCss3Alt, FaCogs, FaGithub } from 'react-icons/fa';
-import {
-  SiTypescript,
-  SiJavascript,
-  SiReact,
-  SiNextdotjs,
-  SiVuedotjs,
-  SiTailwindcss,
-  SiVitess,
-  SiJest,
-  SiPnpm,
-} from 'react-icons/si';
-
-const skills = [
-  { name: 'TypeScript', icon: <SiTypescript /> },
-  { name: 'JavaScript', icon: <SiJavascript /> },
-  { name: 'React', icon: <SiReact /> },
-  { name: 'Next.js', icon: <SiNextdotjs /> },
-  { name: 'Vue.js', icon: <SiVuedotjs /> },
-  { name: 'Vite', icon: <SiVitess /> },
-  { name: 'Jest', icon: <SiJest /> },
-  { name: 'HTML', icon: <FaHtml5 /> },
-  { name: 'CSS', icon: <FaCss3Alt /> },
-  { name: 'TailWindCSS', icon: <SiTailwindcss /> },
-  { name: 'GitHub', icon: <FaGithub /> },
-  { name: 'pnpm', icon: <SiPnpm /> },
-];
+import { FaCogs } from 'react-icons/fa';
+import { skills } from '@/constants/LifeData';
 
 const Skills = () => {
   return (
@@ -36,7 +11,7 @@ const Skills = () => {
       <div className="flex flex-wrap">
         {skills.map((skill, index) => (
           <div className="m-2 flex items-center" key={index}>
-            {skill.icon}
+            <skill.icon />
             <span className="ml-1">{skill.name}</span>
           </div>
         ))}

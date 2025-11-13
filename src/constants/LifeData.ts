@@ -1,9 +1,39 @@
+import { FaHtml5, FaCss3Alt, FaGithub } from 'react-icons/fa';
+import {
+  SiTypescript,
+  SiJavascript,
+  SiReact,
+  SiNextdotjs,
+  SiVuedotjs,
+  SiTailwindcss,
+  SiVitess,
+  SiJest,
+  SiPnpm,
+  SiPython,
+} from 'react-icons/si';
+
 export type Life = {
   description: string;
   year: number;
   month: number;
   age: number;
 };
+
+export const skills = [
+  { name: 'TypeScript', icon: SiTypescript },
+  { name: 'JavaScript', icon: SiJavascript },
+  { name: 'React', icon: SiReact },
+  { name: 'Next.js', icon: SiNextdotjs },
+  { name: 'Vue.js', icon: SiVuedotjs },
+  { name: 'Vite', icon: SiVitess },
+  { name: 'Jest', icon: SiJest },
+  { name: 'HTML', icon: FaHtml5 },
+  { name: 'CSS', icon: FaCss3Alt },
+  { name: 'TailWindCSS', icon: SiTailwindcss },
+  { name: 'GitHub', icon: FaGithub },
+  { name: 'pnpm', icon: SiPnpm },
+  { name: 'python', icon: SiPython },
+];
 
 export const LifeData: Life[] = [
   {
@@ -34,7 +64,8 @@ export const LifeData: Life[] = [
     age: 6,
   },
   {
-    description: '埼玉県越谷市越谷小学校卒業。この時すでにゲームにはまりかけていた。',
+    description:
+      '埼玉県越谷市越谷小学校卒業。この時すでにゲームにはまりかけていた。',
     year: 2017,
     month: 3,
     age: 12,
@@ -72,7 +103,8 @@ export const LifeData: Life[] = [
     age: 18,
   },
   {
-    description: '東洋大学情報連携学部情報連携学科在籍中。真面目に就職活動に取り組んでいるつもり',
+    description:
+      '東洋大学情報連携学部情報連携学科在籍中。真面目に就職活動に取り組んでいるつもり',
     year: 2025,
     month: 11,
     age: 20,
