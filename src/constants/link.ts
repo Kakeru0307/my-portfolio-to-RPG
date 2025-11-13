@@ -10,7 +10,7 @@ import { GiPerspectiveDiceSixFacesRandom } from 'react-icons/gi';
 
 export interface LinkItem {
   title: string;
-  url: string;
+  url?: string;
   icon: React.ElementType;
   description: string;
 }
