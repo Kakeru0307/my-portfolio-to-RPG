@@ -23,15 +23,6 @@ const RootComponent = () => {
           <Link to="/game" className="[&.active]:font-bold">
             Game
           </Link>
-          <Link to="/product" className="[&.active]:font-bold">
-            Product
-          </Link>
-          <Link to="/contact" className="[&.active]:font-bold">
-            Contact
-          </Link>
-          <Link to="/hiddenStory" className="[&.active]:font-bold">
-            HiddenStory
-          </Link>
         </div>
       </div>
       <hr />
