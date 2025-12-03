@@ -35,7 +35,7 @@ export const linkItems: LinkItem[] = [
     description: '勇者が好きだったといわれている音楽',
   },
   {
-    title: 'game',
+    title: 'Game',
     url: '/game',
     icon: FaGamepad,
     description:

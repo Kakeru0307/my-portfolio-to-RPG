@@ -8,6 +8,7 @@ function Contact() {
   const [email, setEmail] = useState('');
   const [mainPurpose, setMainPurpose] = useState('');
   const [description, setDescription] = useState('');
+
   return (
     <SafeSurpose>
       <div className="flex flex-col items-center justify-center">
