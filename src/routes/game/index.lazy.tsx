@@ -6,7 +6,7 @@ import { message } from '@/constants/message';
 const Game = () => {
   return (
     <div className="flex flex-col justify-between p-4">
-      <div className="text-4xl mb-8 text-center">
+      <div className="text-4xl m-8 text-center">
         <h1>My Favorite Games</h1>
       </div>
 

@@ -1,4 +1,3 @@
-// 1. プレイ状況ごとの色定義に変更
 const STATUS_COLORS: Record<string, string> = {
   recent: 'bg-green-500',
   regular: 'bg-yellow-500',
@@ -6,7 +5,6 @@ const STATUS_COLORS: Record<string, string> = {
   default: 'bg-gray-500',
 };
 
-// Propsの型定義を status に変更
 type BWOctagonProps = {
   text: string;
   status?: 'recent' | 'regular' | 'past';
