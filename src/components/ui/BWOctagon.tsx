@@ -8,9 +8,10 @@ const STATUS_COLORS: Record<string, string> = {
 type BWOctagonProps = {
   text: string;
   status?: 'recent' | 'regular' | 'past';
+  onClick?: () => void;
 };
 
-const BWOctagon = ({ text, status = 'recent' }: BWOctagonProps) => {
+const BWOctagon = ({ text, status = 'recent', onClick }: BWOctagonProps) => {
   const borderColor = STATUS_COLORS[status] || STATUS_COLORS.default;
 
   const clipPathValue =
@@ -21,7 +22,10 @@ const BWOctagon = ({ text, status = 'recent' }: BWOctagonProps) => {
   };
 
   return (
-    <div className="inline-block filter drop-shadow-lg transition-transform hover:scale-105 cursor-pointer">
+    <div
+      onClick={onClick}
+      className="inline-block filter drop-shadow-lg transition-transform hover:scale-105 cursor-pointer"
+    >
       <div className={`${borderColor} p-[3px]`} style={shapeStyle}>
         <div
           className="bg-gray-900 flex flex-col items-center justify-center py-2 px-5"
