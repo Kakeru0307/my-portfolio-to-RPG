@@ -52,7 +52,7 @@ function Contact() {
           />
         </form>
         <div className="p-4">
-          <BWOctagon text="送信" />
+          <BWOctagon text="送信" onClick={() => alert('Wow')} />
         </div>
       </div>
     </SafeSurpose>
