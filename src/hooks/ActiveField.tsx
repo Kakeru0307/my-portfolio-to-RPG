@@ -17,7 +17,7 @@ const ActiveField = ({ linkitems }: ActiveFieldProps) => {
   };
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-4 w-2/5 mx-auto">
       {linkitems.map((item) => (
         <div
           key={item.title}
@@ -26,9 +26,7 @@ const ActiveField = ({ linkitems }: ActiveFieldProps) => {
           className="flex flex-col"
         >
           <Link
-            className={`flex items-center space-x-2 border-2 p-2 rounded transition-colors duration-200 ${
-              onTitle === item.title ? 'bg-gray-800 border-gray-500' : 'border-transparent'
-            }`}
+            className={`flex items-center justify-center space-x-2 border-2 p-2 rounded transition-colors duration-200 bg-gray-800 border-gray-500`}
             to={item.url}
           >
             <item.icon />
@@ -37,13 +35,13 @@ const ActiveField = ({ linkitems }: ActiveFieldProps) => {
 
           <div
             className={`
-              overflow-hidden transition-all duration-300 ease-in-out ml-4
-              ${onTitle === item.title ? 'max-h-40 opacity-100 mt-1' : 'max-h-0 opacity-0 mt-0'}
+              overflow-hidden transition-all duration-300 ease-in-out
+              ${onTitle === item.title ? 'opacity-100' : 'opacity-0 mt-0'}
             `}
           >
             <Link
               to={item.url}
-              className="block bg-gray-800/80 text-gray-200 p-2 rounded text-sm border-l-4 border-gray-00"
+              className="flex justify-center block bg-gray-800/80 text-gray-200 p-2 rounded text-sm border-t-2 border-gray-20"
             >
               {item.description}
             </Link>
