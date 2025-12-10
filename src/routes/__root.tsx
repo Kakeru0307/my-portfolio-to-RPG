@@ -9,7 +9,7 @@ const RootComponent = () => {
 
   return (
     <>
-      <div className="p-2 flex gap-2 justify-between">
+      <div className="p-3 flex gap-2 justify-between">
         <div className="flex gap-2">
           <Link to="/" className="[&.active]:font-bold">
             Home
