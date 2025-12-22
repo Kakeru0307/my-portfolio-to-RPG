@@ -1,4 +1,5 @@
-import { createLazyFileRoute, Link } from '@tanstack/react-router';
+import { Link, createLazyFileRoute } from '@tanstack/react-router';
+
 import ChatMessage from '@/components/ChatMessage';
 import SafeSuspense from '@/components/SafeSuspense';
 import { linkItems } from '@/constants/link';
