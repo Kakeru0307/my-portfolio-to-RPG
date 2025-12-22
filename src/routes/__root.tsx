@@ -9,7 +9,7 @@ const RootComponent = () => {
 
   return (
     <>
-      <div className="p-3 flex gap-2 justify-between">
+      <div className="p-3 z-10 flex gap-2 justify-between sticky top-0 bg-gray-800 border-b">
         <div className="flex gap-2">
           <Link to="/" className="[&.active]:font-bold">
             Home
@@ -34,7 +34,6 @@ const RootComponent = () => {
           </Link>
         </div>
       </div>
-      <hr />
       <AnimatePresence mode="wait">
         <PageTransition key={location.pathname}>
           <Outlet />

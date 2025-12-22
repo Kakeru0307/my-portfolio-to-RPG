@@ -1,5 +1,7 @@
 import { createLazyFileRoute } from '@tanstack/react-router';
+
 import SafeSuspense from '@/components/SafeSuspense';
+
 import HomePage from './-components/HomePage';
 
 const Home = () => {
