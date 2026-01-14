@@ -6,15 +6,18 @@ interface ChatMessageProps {
 
 export function ChatMessage({ message }: ChatMessageProps) {
   return (
-    <div style={{ whiteSpace: 'pre-line' }}>
-      <Typewriter
-        key={message}
-        words={[message]}
-        cursor
-        cursorStyle="_"
-        typeSpeed={50}
-        delaySpeed={1000}
-      />
+    <div className="relative whitespace-pre-line">
+      <div className="invisible">{message}</div>
+      <div className="absolute top-0 left-0 w-full">
+        <Typewriter
+          key={message}
+          words={[message]}
+          cursor
+          cursorStyle="_"
+          typeSpeed={50}
+          delaySpeed={1000}
+        />
+      </div>
     </div>
   );
 }
