@@ -1,14 +1,13 @@
 import { createLazyFileRoute } from '@tanstack/react-router';
+
 import SafeSurpose from '@/components/SafeSuspense';
 import BWOctagon from '@/components/ui/BWOctagon';
 import Title from '@/components/ui/Title';
-import { useState } from 'react';
+
+import { useMailSend } from './-hooks/useMailSend';
 
 function Contact() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [mainPurpose, setMainPurpose] = useState('');
-  const [description, setDescription] = useState('');
+  const { values, handleChange, handleSubmit, isSubmitting } = useMailSend();
 
   return (
     <SafeSurpose>
@@ -21,8 +20,8 @@ function Contact() {
             name="name"
             required
             className="border border-gray-300 p-2 rounded text-black m-2 text-2xl text-center"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            value={values.name}
+            onChange={handleChange}
           />
           <label className="text-2xl p-4">メールアドレス</label>
           <input
@@ -30,8 +29,8 @@ function Contact() {
             name="email"
             required
             className="border border-gray-300 p-2 rounded text-black m-2 text-2xl text-center"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            value={values.email}
+            onChange={handleChange}
           />
           <label className="text-2xl p-4">件名</label>
           <input
@@ -39,8 +38,8 @@ function Contact() {
             name="mainPurpose"
             required
             className="border border-gray-300 p-2 rounded text-black m-2 text-2xl text-center"
-            value={mainPurpose}
-            onChange={(e) => setMainPurpose(e.target.value)}
+            value={values.mainPurpose}
+            onChange={handleChange}
           />
           <label className="text-2xl p-4">詳細</label>
           <textarea
@@ -48,12 +47,15 @@ function Contact() {
             rows={5}
             required
             className="border border-gray-300 p-2 rounded text-black m-2 text-2xl text-center"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
+            value={values.description}
+            onChange={handleChange}
           />
         </form>
         <div className="p-4">
-          <BWOctagon text="送信" onClick={() => alert('Wow')} />
+          <BWOctagon
+            text={isSubmitting ? '送信中...' : '送信'}
+            onClick={handleSubmit}
+          />
         </div>
       </div>
     </SafeSurpose>
