@@ -16,7 +16,7 @@ export default async function mailSend(request, response) {
   try {
     const data = await resend.emails.send({
       from: 'Portfolio Contact <onboarding@resend.dev>',
-      to: ['Kake2437@gmail.com'],
+      to: ['kake2437@gmail.com'],
       subject: `【お問い合わせ】${mainPurpose || '件名なし'} (${name}様)`,
       html: `
         <h2>ポートフォリオからお問い合わせがありました</h2>
