@@ -1,7 +1,10 @@
 import { createLazyFileRoute } from '@tanstack/react-router';
+
 import ChatMessage from '@/components/ChatMessage';
 import BWOctagon from '@/components/ui/BWOctagon';
+import RandomTips from '@/components/utils/RandomTips';
 import { message } from '@/constants/message';
+import { Tips } from '@/constants/message';
 
 const Game = () => {
   return (
@@ -34,6 +37,7 @@ const Game = () => {
           <BWOctagon text="SF6" status="recent" />
         </div>
       </div>
+      <RandomTips Tips={Tips} />
     </div>
   );
 };

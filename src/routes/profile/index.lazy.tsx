@@ -1,10 +1,15 @@
+import { FaHeart, FaUser } from 'react-icons/fa';
+
 import { createLazyFileRoute } from '@tanstack/react-router';
-import { FaUser, FaHeart } from 'react-icons/fa';
+
 import ChatMessage from '@/components/ChatMessage';
-import { message } from '@/constants/message';
-import Skills from './-component/Skills';
-import LifeTable from './-component/LifeTable';
 import SafeSuspense from '@/components/SafeSuspense';
+import RandomTips from '@/components/utils/RandomTips';
+import { message } from '@/constants/message';
+import { Tips } from '@/constants/message';
+
+import LifeTable from './-component/LifeTable';
+import Skills from './-component/Skills';
 
 function Profile() {
   return (
@@ -27,6 +32,7 @@ function Profile() {
         </div>
         <Skills />
         <LifeTable />
+        <RandomTips Tips={Tips} />
       </div>
     </SafeSuspense>
   );
