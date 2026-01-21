@@ -3,6 +3,8 @@ import { createLazyFileRoute } from '@tanstack/react-router';
 import SafeSurpose from '@/components/SafeSuspense';
 import BWOctagon from '@/components/ui/BWOctagon';
 import Title from '@/components/ui/Title';
+import RandomTips from '@/components/utils/RandomTips';
+import { Tips } from '@/constants/message';
 
 import { useMailSend } from './-hooks/useMailSend';
 
@@ -57,6 +59,7 @@ function Contact() {
             onClick={handleSubmit}
           />
         </div>
+        <RandomTips Tips={Tips} />
       </div>
     </SafeSurpose>
   );
