@@ -26,7 +26,7 @@ const ActiveField = ({ linkItems }: ActiveFieldProps) => {
           className="flex flex-col"
         >
           <Link
-            className={`flex items-center justify-center space-x-2 border-2 p-2 rounded transition-colors duration-200 bg-gray-800 border-gray-500`}
+            className="flex items-center justify-center space-x-2 border-2 p-2 rounded transition-colors duration-200 bg-gray-800 border-gray-500"
             to={item.url}
           >
             <item.icon />

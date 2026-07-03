@@ -1,7 +1,7 @@
-import ActiveField from '@/components/ui/ActiveField';
-import GameStartButton from '@/components/ui/GameStartButton';
-import Title from '@/components/ui/Title';
-import RandomTips from '@/components/utils/RandomTips';
+import ActiveField from '@/components/organisms/ActiveField';
+import GameStartButton from '@/components/molecules/GameStartButton';
+import Title from '@/components/atoms/Title';
+import RandomTips from '@/components/organisms/RandomTips';
 import { linkItems } from '@/constants/link';
 import { Tips } from '@/constants/message';
 
@@ -13,7 +13,7 @@ const HomePage = () => {
       <div className="flex flex-col mt-8 w-full">
         <ActiveField linkItems={linkItems} />
       </div>
-      <RandomTips Tips={Tips} />
+      <RandomTips tips={Tips} />
     </>
   );
 };
