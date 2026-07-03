@@ -10,10 +10,25 @@ import { GiPerspectiveDiceSixFacesRandom } from 'react-icons/gi';
 
 export interface LinkItem {
   title: string;
-  url?: string;
+  url: string;
   icon: React.ElementType;
   description: string;
 }
+
+export interface NavItem {
+  to: string;
+  label: string;
+}
+
+export const navItems: NavItem[] = [
+  { to: '/', label: 'Home' },
+  { to: '/profile', label: 'Profile' },
+  { to: '/music', label: 'Music' },
+  { to: '/game', label: 'Game' },
+  { to: '/product', label: 'Product' },
+  { to: '/contact', label: 'Contact' },
+  { to: '/hiddenStory', label: 'HiddenStory' },
+];
 
 export const linkItems: LinkItem[] = [
   {
