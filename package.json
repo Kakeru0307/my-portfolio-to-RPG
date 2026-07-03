@@ -14,13 +14,19 @@
     "update-rss": "node ./src/rss/rss-parser.mjs",
     "prepare": "husky install",
     "lint-staged": "lint-staged",
-    "preinstall": "npx only-allow pnpm"
+    "preinstall": "npx only-allow pnpm",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:push": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio"
   },
   "dependencies": {
+    "@neondatabase/serverless": "^1.1.0",
     "@tanstack/react-query": "^5.90.12",
     "@tanstack/react-router": "^1.141.2",
     "@tanstack/react-table": "^8.21.3",
     "@tanstack/router-devtools": "^1.141.2",
+    "drizzle-orm": "^0.45.2",
     "framer-motion": "^12.23.26",
     "pnpm": "^10.25.0",
     "react": "^19.2.3",
@@ -32,7 +38,7 @@
     "react-simple-typewriter": "^5.0.1",
     "resend": "^6.6.0",
     "tailwindcss-animate": "^1.0.7",
-    "vercel": "^50.3.2"
+    "vercel": "^54.20.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.2",
@@ -42,8 +48,11 @@
     "@types/node": "^24.10.4",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
+    "@vercel/node": "^5.8.22",
     "@vitejs/plugin-react": "^5.1.2",
     "autoprefixer": "^10.4.23",
+    "dotenv": "^17.4.2",
+    "drizzle-kit": "^0.31.10",
     "eslint": "^9.39.2",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.26",
