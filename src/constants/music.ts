@@ -4,7 +4,7 @@ export const artistList: ArtistItem[] = [
   {
     text: 'Orangestar',
     status: 'regular',
-    url: 'https://www.youtube.com/@Orangestar',
+    url: 'https://www.youtube.com/channel/UCgBPuTX7crv_2jKAkH5z7bA',
   },
   {
     text: 'キタニタツヤ',
