@@ -1,5 +1,6 @@
 import { PageTransition } from '../components/PageTransition';
 import GlobalNav from '@/components/organisms/GlobalNav';
+import { fetchMe } from '@/lib/authClient';
 import { createRootRoute, Outlet } from '@tanstack/react-router';
 import { TanStackRouterDevtools } from '@tanstack/router-devtools';
 import { AnimatePresence } from 'framer-motion';
@@ -22,5 +23,14 @@ const RootComponent = () => {
 };
 
 export const Route = createRootRoute({
+  beforeLoad: async () => {
+    const user = await fetchMe();
+
+    return {
+      auth: {
+        user,
+      },
+    };
+  },
   component: RootComponent,
 });

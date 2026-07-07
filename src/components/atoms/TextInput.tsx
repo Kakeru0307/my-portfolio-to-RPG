@@ -1,6 +1,6 @@
 type TextInputProps = {
   name: string;
-  type?: 'text' | 'email';
+  type?: 'text' | 'email' | 'password';
   required?: boolean;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;

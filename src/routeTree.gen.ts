@@ -11,14 +11,15 @@
 import { createFileRoute } from '@tanstack/react-router'
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as HiddenStoryIndexRouteImport } from './routes/hiddenStory/index'
+import { Route as GameIndexRouteImport } from './routes/game/index'
+import { Route as AuthIndexRouteImport } from './routes/auth/index'
 
 const IndexLazyRouteImport = createFileRoute('/')()
 const RoomIndexLazyRouteImport = createFileRoute('/room/')()
 const ProfileIndexLazyRouteImport = createFileRoute('/profile/')()
 const ProductIndexLazyRouteImport = createFileRoute('/product/')()
 const MusicIndexLazyRouteImport = createFileRoute('/music/')()
-const HiddenStoryIndexLazyRouteImport = createFileRoute('/hiddenStory/')()
-const GameIndexLazyRouteImport = createFileRoute('/game/')()
 const ContactIndexLazyRouteImport = createFileRoute('/contact/')()
 
 const IndexLazyRoute = IndexLazyRouteImport.update({
@@ -46,29 +47,35 @@ const MusicIndexLazyRoute = MusicIndexLazyRouteImport.update({
   path: '/music/',
   getParentRoute: () => rootRouteImport,
 } as any).lazy(() => import('./routes/music/index.lazy').then((d) => d.Route))
-const HiddenStoryIndexLazyRoute = HiddenStoryIndexLazyRouteImport.update({
+const ContactIndexLazyRoute = ContactIndexLazyRouteImport.update({
+  id: '/contact/',
+  path: '/contact/',
+  getParentRoute: () => rootRouteImport,
+} as any).lazy(() => import('./routes/contact/index.lazy').then((d) => d.Route))
+const HiddenStoryIndexRoute = HiddenStoryIndexRouteImport.update({
   id: '/hiddenStory/',
   path: '/hiddenStory/',
   getParentRoute: () => rootRouteImport,
 } as any).lazy(() =>
   import('./routes/hiddenStory/index.lazy').then((d) => d.Route),
 )
-const GameIndexLazyRoute = GameIndexLazyRouteImport.update({
+const GameIndexRoute = GameIndexRouteImport.update({
   id: '/game/',
   path: '/game/',
   getParentRoute: () => rootRouteImport,
 } as any).lazy(() => import('./routes/game/index.lazy').then((d) => d.Route))
-const ContactIndexLazyRoute = ContactIndexLazyRouteImport.update({
-  id: '/contact/',
-  path: '/contact/',
+const AuthIndexRoute = AuthIndexRouteImport.update({
+  id: '/auth/',
+  path: '/auth/',
   getParentRoute: () => rootRouteImport,
-} as any).lazy(() => import('./routes/contact/index.lazy').then((d) => d.Route))
+} as any).lazy(() => import('./routes/auth/index.lazy').then((d) => d.Route))
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexLazyRoute
+  '/auth': typeof AuthIndexRoute
+  '/game': typeof GameIndexRoute
+  '/hiddenStory': typeof HiddenStoryIndexRoute
   '/contact': typeof ContactIndexLazyRoute
-  '/game': typeof GameIndexLazyRoute
-  '/hiddenStory': typeof HiddenStoryIndexLazyRoute
   '/music': typeof MusicIndexLazyRoute
   '/product': typeof ProductIndexLazyRoute
   '/profile': typeof ProfileIndexLazyRoute
@@ -76,9 +83,10 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexLazyRoute
+  '/auth': typeof AuthIndexRoute
+  '/game': typeof GameIndexRoute
+  '/hiddenStory': typeof HiddenStoryIndexRoute
   '/contact': typeof ContactIndexLazyRoute
-  '/game': typeof GameIndexLazyRoute
-  '/hiddenStory': typeof HiddenStoryIndexLazyRoute
   '/music': typeof MusicIndexLazyRoute
   '/product': typeof ProductIndexLazyRoute
   '/profile': typeof ProfileIndexLazyRoute
@@ -87,9 +95,10 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexLazyRoute
+  '/auth/': typeof AuthIndexRoute
+  '/game/': typeof GameIndexRoute
+  '/hiddenStory/': typeof HiddenStoryIndexRoute
   '/contact/': typeof ContactIndexLazyRoute
-  '/game/': typeof GameIndexLazyRoute
-  '/hiddenStory/': typeof HiddenStoryIndexLazyRoute
   '/music/': typeof MusicIndexLazyRoute
   '/product/': typeof ProductIndexLazyRoute
   '/profile/': typeof ProfileIndexLazyRoute
@@ -99,9 +108,10 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/contact'
+    | '/auth'
     | '/game'
     | '/hiddenStory'
+    | '/contact'
     | '/music'
     | '/product'
     | '/profile'
@@ -109,9 +119,10 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/contact'
+    | '/auth'
     | '/game'
     | '/hiddenStory'
+    | '/contact'
     | '/music'
     | '/product'
     | '/profile'
@@ -119,9 +130,10 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
-    | '/contact/'
+    | '/auth/'
     | '/game/'
     | '/hiddenStory/'
+    | '/contact/'
     | '/music/'
     | '/product/'
     | '/profile/'
@@ -130,9 +142,10 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexLazyRoute: typeof IndexLazyRoute
+  AuthIndexRoute: typeof AuthIndexRoute
+  GameIndexRoute: typeof GameIndexRoute
+  HiddenStoryIndexRoute: typeof HiddenStoryIndexRoute
   ContactIndexLazyRoute: typeof ContactIndexLazyRoute
-  GameIndexLazyRoute: typeof GameIndexLazyRoute
-  HiddenStoryIndexLazyRoute: typeof HiddenStoryIndexLazyRoute
   MusicIndexLazyRoute: typeof MusicIndexLazyRoute
   ProductIndexLazyRoute: typeof ProductIndexLazyRoute
   ProfileIndexLazyRoute: typeof ProfileIndexLazyRoute
@@ -176,20 +189,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MusicIndexLazyRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/hiddenStory/': {
-      id: '/hiddenStory/'
-      path: '/hiddenStory'
-      fullPath: '/hiddenStory'
-      preLoaderRoute: typeof HiddenStoryIndexLazyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/game/': {
-      id: '/game/'
-      path: '/game'
-      fullPath: '/game'
-      preLoaderRoute: typeof GameIndexLazyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/contact/': {
       id: '/contact/'
       path: '/contact'
@@ -197,14 +196,36 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactIndexLazyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/hiddenStory/': {
+      id: '/hiddenStory/'
+      path: '/hiddenStory'
+      fullPath: '/hiddenStory'
+      preLoaderRoute: typeof HiddenStoryIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/game/': {
+      id: '/game/'
+      path: '/game'
+      fullPath: '/game'
+      preLoaderRoute: typeof GameIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth/': {
+      id: '/auth/'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexLazyRoute: IndexLazyRoute,
+  AuthIndexRoute: AuthIndexRoute,
+  GameIndexRoute: GameIndexRoute,
+  HiddenStoryIndexRoute: HiddenStoryIndexRoute,
   ContactIndexLazyRoute: ContactIndexLazyRoute,
-  GameIndexLazyRoute: GameIndexLazyRoute,
-  HiddenStoryIndexLazyRoute: HiddenStoryIndexLazyRoute,
   MusicIndexLazyRoute: MusicIndexLazyRoute,
   ProductIndexLazyRoute: ProductIndexLazyRoute,
   ProfileIndexLazyRoute: ProfileIndexLazyRoute,

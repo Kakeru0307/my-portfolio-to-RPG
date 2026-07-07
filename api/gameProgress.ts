@@ -1,14 +1,15 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 
+import { getAuthenticatedUser } from '../lib/auth/session';
 import { isDbEnabled } from '../lib/db';
 import {
-  findGameProgressByPlayerId,
+  findGameProgressByUserId,
   upsertGameProgress,
 } from '../lib/repositories/gameProgress';
+import { validateUnlockedPages } from '../lib/types/auth';
 
 type GameProgressBody = {
-  playerId?: string;
-  unlockedPages?: string[];
+  unlockedPages?: unknown;
 };
 
 export default async function gameProgressHandler(
@@ -21,17 +22,18 @@ export default async function gameProgressHandler(
     });
   }
 
+  const user = await getAuthenticatedUser(request);
+
+  if (!user) {
+    return response.status(401).json({ error: 'ログインが必要です' });
+  }
+
   if (request.method === 'GET') {
-    const playerId = request.query.playerId;
-
-    if (typeof playerId !== 'string' || !playerId) {
-      return response.status(400).json({ error: 'playerId が必要です' });
-    }
-
     try {
-      const progress = await findGameProgressByPlayerId(playerId);
+      const progress = await findGameProgressByUserId(user.id);
+
       return response.status(200).json({
-        playerId,
+        userId: user.id,
         unlockedPages: progress?.unlockedPages ?? [],
       });
     } catch (error) {
@@ -41,16 +43,16 @@ export default async function gameProgressHandler(
   }
 
   if (request.method === 'POST') {
-    const { playerId, unlockedPages } = request.body as GameProgressBody;
+    const { unlockedPages } = request.body as GameProgressBody;
 
-    if (!playerId || !Array.isArray(unlockedPages)) {
+    if (!validateUnlockedPages(unlockedPages)) {
       return response.status(400).json({
-        error: 'playerId と unlockedPages（配列）が必要です',
+        error: 'unlockedPages（文字列配列）が必要です',
       });
     }
 
     try {
-      const progress = await upsertGameProgress(playerId, unlockedPages);
+      const progress = await upsertGameProgress(user.id, unlockedPages);
       return response.status(200).json(progress);
     } catch (error) {
       console.error('Game progress POST error:', error);
