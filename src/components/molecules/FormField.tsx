@@ -5,7 +5,7 @@ import TextInput from '@/components/atoms/TextInput';
 type FormFieldProps = {
   label: string;
   name: string;
-  type?: 'text' | 'email';
+  type?: 'text' | 'email' | 'password';
   multiline?: boolean;
   rows?: number;
   required?: boolean;

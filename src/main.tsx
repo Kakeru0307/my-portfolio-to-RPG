@@ -6,8 +6,16 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 
 import { routeTree } from './routeTree.gen';
+import type { RouterContext } from './types/router';
 
-const router = createRouter({ routeTree });
+const router = createRouter({
+  routeTree,
+  context: {
+    auth: {
+      user: null,
+    },
+  } satisfies RouterContext,
+});
 
 declare module '@tanstack/react-router' {
   interface Register {

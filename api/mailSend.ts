@@ -1,13 +1,27 @@
+import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { Resend } from 'resend';
+
+import { saveContact } from '../lib/repositories/contacts';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export default async function mailSend(request, response) {
+type ContactBody = {
+  name?: string;
+  email?: string;
+  mainPurpose?: string;
+  description?: string;
+};
+
+export default async function mailSend(
+  request: VercelRequest,
+  response: VercelResponse
+) {
   if (request.method !== 'POST') {
     return response.status(405).json({ message: 'Method Not Allowed' });
   }
 
-  const { name, email, mainPurpose, description } = request.body;
+  const { name, email, mainPurpose, description } =
+    request.body as ContactBody;
 
   if (!name || !email || !mainPurpose || !description) {
     return response.status(400).json({ error: '必須項目が不足しています' });
@@ -28,6 +42,12 @@ export default async function mailSend(request, response) {
         <p style="white-space: pre-wrap;">${description}</p>
       `,
     });
+
+    try {
+      await saveContact({ name, email, mainPurpose, description });
+    } catch (dbError) {
+      console.error('Contact DB save error:', dbError);
+    }
 
     return response.status(200).json(data);
   } catch (error) {
