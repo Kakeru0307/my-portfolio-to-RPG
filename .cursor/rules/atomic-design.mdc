@@ -1,0 +1,105 @@
+---
+description: 本プロジェクトの正ルール（atomic design・フロント改修方針・返答形式）。グローバル coding.mdc より本ファイルを優先する
+globs: src/components/**/*,src/routes/**/*,src/constants/**/*,src/types/**/*
+alwaysApply: true
+---
+
+# プロジェクトフロントルール（atomic design）
+
+> 本ファイルがプロジェクト内の正。`~/.cursor/rules/coding.mdc` と重複する場合は本ファイルを優先する。
+
+## 層の責務
+
+| 層 | ディレクトリ | 責務 | 例 |
+|---|---|---|---|
+| atoms | `components/atoms/` | 単一 UI 要素。スタイルと最小 props のみ | `Title`, `BWOctagon`, `YoutubeEmbed` |
+| molecules | `components/molecules/` | atoms の再利用可能な組み合わせ | `OctagonGridPanel`, `MusicVideoListPanel` |
+| organisms | `components/organisms/` | ページ内の意味ある UI ブロック | `MusicPage`, `FavoriteListPage`, `RandomTips` |
+| routes | `routes/**` | ルーティング + organism への props 渡し | `music/index.lazy.tsx`, `__root.tsx` |
+| インフラ | `components/` 直下 | 横断 UI（3 層外）。atoms 層に準ずる | `SafeSuspense`, `PageTransition` |
+
+- ページ固有 UI は専用 organism を置いてよい（例: `MusicPage` / `FavoriteListPage`）
+- `routes/-components/` は当該 route 専用 organism、`routes/*/-hooks/` は route 専用 hook
+
+## 依存方向（必須）
+
+- routes → organisms → molecules → atoms
+- organism 同士の import はページ合成（例: `RandomTips`）に限り可
+- atom / molecule から organism を import しない
+- molecule 同士の import は既存パターンに限り最小限
+
+## routes の制約
+
+- lazy route に UI マークアップ・レイアウト・データ加工を書かない
+- 定数は `constants/` から import し、organism に props で渡す
+- `__root.tsx` はアプリ共通レイアウト（例: `GlobalNav`）のみ。ページ固有 UI は organism へ
+- `routeTree.gen.ts` は自動生成のため編集しない
+
+## データ・型
+
+- 表示データ: `src/constants/`（`enums/` ではなく `constants/` を正とする）
+- 共有型: `src/types/`
+- コンポーネント内に配列・URL 等をハードコードしない
+
+## 共通化・重複
+
+- パネル見出し（`OctagonGridPanel` / `MusicVideoListPanel`）、ステータス枠（`MusicPage` / `FavoriteListPage`）などの重複は既知の負債として許容する
+- **改修スコープ外では無理に molecule 抽出しない**
+- 同一 UI が 2 箇所以上で必要になり、**今回の改修に共通化が含まれる場合のみ** shared molecule の抽出を検討する
+
+## 実装方針
+
+- 定数調整・既存コンポーネント活用を優先する
+- 新規 atom / molecule / organism が必須なら実装前にユーザーへ通知（既存 molecule への optional props 追加のみは不要）
+- molecule 拡張は optional props 等で後方互換を保つ（例: `OctagonGridPanel` の `url?`）
+- 他ページへの非影響を意識する（例: `/music` 改修で `/game` の `FavoriteListPage` を壊さない）
+- テストコードは生成しない（ユーザーが明示的に求めた場合を除く）
+- 非推奨・レガシー記法は使わない。使う場合は理由を述べる
+
+## 改修ワークフロー
+
+大規模改修では次の順を守る。
+
+1. **Discuss** — 要件・スコープ・影響範囲を整理（返答形式 4 項目は不要）
+2. **Memo** — `docs/改修/<題名>/memo.md` に方針を記載し、ユーザー承認を得る
+3. **Implement** — 承認後に実装。完了時は返答形式 4 項目で報告
+
+## アンチパターン
+
+```tsx
+// ❌ route に UI 直書き
+const Music = () => (
+  <div><BWOctagon ... /><iframe ... /></div>
+);
+
+// ❌ molecule から organism を import
+import MusicPage from '@/components/organisms/MusicPage';
+
+// ❌ organism 内に表示データを直書き
+const artists = [{ name: 'foo', url: '...' }];
+
+// ✅ 薄い route + 定数 + organism
+const Music = () => (
+  <MusicPage title="..." artists={artistList} musics={musicList} tips={Tips} />
+);
+```
+
+## 非フロント（本ルールの対象外）
+
+- `api/`（例: `mailSend.ts`）は atomic design の対象外。API 改修時は別途要件に従う
+- 自動生成・ビルド成果物（`routeTree.gen.ts`, `*.tsbuildinfo`）は編集しない
+
+## 返答形式
+
+| 状況 | 返答 |
+|---|---|
+| 改修・実装完了 | 次の 4 項目 |
+| 質問・レビュー・設計相談・Discuss | 通常の説明で可 |
+| Memo 作成 | 方針の整理と確認事項 |
+
+**改修・実装完了時の 4 項目:**
+
+1. **作成したコード** — 変更ファイル・パス
+2. **処理部分** — 何をどう変えたか
+3. **影響範囲** — 対象 / 非対象
+4. **その他** — 不明点、新規コンポーネント要否、手動確認事項
