@@ -1,18 +1,16 @@
 import { createLazyFileRoute } from '@tanstack/react-router';
 
-import FavoriteListPage from '@/components/organisms/FavoriteListPage';
+import MusicPage from '@/components/organisms/MusicPage';
 import { artistList, musicList } from '@/constants/music';
 import { message, Tips } from '@/constants/message';
 
 const Music = () => {
   return (
-    <FavoriteListPage
+    <MusicPage
       title="My Favorite Musics"
       statusMessage={message.MyMusicStatus}
-      sections={[
-        { heading: 'ARTIST LIST', items: artistList },
-        { heading: 'MUSIC LIST', items: musicList },
-      ]}
+      artists={artistList}
+      musics={musicList}
       tips={Tips}
     />
   );

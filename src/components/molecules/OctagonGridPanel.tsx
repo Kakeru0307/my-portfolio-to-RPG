@@ -1,9 +1,17 @@
 import BWOctagon from '@/components/atoms/BWOctagon';
 import { OctagonItem } from '@/types/octagon';
 
+type OctagonGridItem = OctagonItem & {
+  url?: string;
+};
+
 type OctagonGridPanelProps = {
   title: string;
-  items: OctagonItem[];
+  items: OctagonGridItem[];
+};
+
+const openExternalUrl = (url: string) => {
+  window.open(url, '_blank', 'noopener,noreferrer');
 };
 
 const OctagonGridPanel = ({ title, items }: OctagonGridPanelProps) => {
@@ -18,7 +26,12 @@ const OctagonGridPanel = ({ title, items }: OctagonGridPanelProps) => {
 
       <div className="grid grid-cols-3 gap-2 w-full justify-items-center">
         {items.map((item) => (
-          <BWOctagon key={item.text} text={item.text} status={item.status} />
+          <BWOctagon
+            key={item.text}
+            text={item.text}
+            status={item.status}
+            onClick={item.url ? () => openExternalUrl(item.url!) : undefined}
+          />
         ))}
       </div>
     </div>
