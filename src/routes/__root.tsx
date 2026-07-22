@@ -1,5 +1,6 @@
 import { PageTransition } from '../components/PageTransition';
 import GlobalNav from '@/components/organisms/GlobalNav';
+import { navItems } from '@/constants/link';
 import { createRootRoute, Outlet } from '@tanstack/react-router';
 import { TanStackRouterDevtools } from '@tanstack/router-devtools';
 import { AnimatePresence } from 'framer-motion';
@@ -10,7 +11,7 @@ const RootComponent = () => {
 
   return (
     <>
-      <GlobalNav />
+      <GlobalNav items={navItems} />
       <AnimatePresence mode="wait">
         <PageTransition key={location.pathname}>
           <Outlet />

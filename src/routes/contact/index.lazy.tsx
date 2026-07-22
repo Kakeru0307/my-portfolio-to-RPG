@@ -1,9 +1,7 @@
 import { createLazyFileRoute } from '@tanstack/react-router';
 
 import SafeSuspense from '@/components/SafeSuspense';
-import Title from '@/components/atoms/Title';
-import ContactForm from '@/components/organisms/ContactForm';
-import RandomTips from '@/components/organisms/RandomTips';
+import ContactPage from '@/components/organisms/ContactPage';
 import { Tips } from '@/constants/message';
 
 import { useMailSend } from './-hooks/useMailSend';
@@ -13,16 +11,14 @@ function Contact() {
 
   return (
     <SafeSuspense>
-      <div className="flex flex-col items-center justify-center">
-        <Title name="Contact to Me" />
-        <ContactForm
-          values={values}
-          isSubmitting={isSubmitting}
-          onChange={handleChange}
-          onSubmit={handleSubmit}
-        />
-        <RandomTips tips={Tips} />
-      </div>
+      <ContactPage
+        title="Contact to Me"
+        values={values}
+        isSubmitting={isSubmitting}
+        tips={Tips}
+        onChange={handleChange}
+        onSubmit={handleSubmit}
+      />
     </SafeSuspense>
   );
 }

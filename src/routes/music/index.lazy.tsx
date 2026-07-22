@@ -1,7 +1,12 @@
 import { createLazyFileRoute } from '@tanstack/react-router';
 
 import MusicPage from '@/components/organisms/MusicPage';
-import { artistList, musicList } from '@/constants/music';
+import {
+  artistList,
+  artistListTitle,
+  musicList,
+  musicListTitle,
+} from '@/constants/music';
 import { message, Tips } from '@/constants/message';
 
 const Music = () => {
@@ -9,6 +14,8 @@ const Music = () => {
     <MusicPage
       title="My Favorite Musics"
       statusMessage={message.MyMusicStatus}
+      artistsTitle={artistListTitle}
+      musicsTitle={musicListTitle}
       artists={artistList}
       musics={musicList}
       tips={Tips}

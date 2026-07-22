@@ -1,14 +1,14 @@
 import BWOctagon from '@/components/atoms/BWOctagon';
 import YoutubeEmbed from '@/components/atoms/YoutubeEmbed';
-import { MusicItem } from '@/types/octagon';
+import { OctagonItem } from '@/types/octagon';
 
 type MusicVideoListPanelProps = {
   title: string;
-  items: MusicItem[];
+  items: OctagonItem[];
 };
 
-const chunkPairs = (items: MusicItem[]): MusicItem[][] => {
-  const pairs: MusicItem[][] = [];
+const chunkPairs = (items: OctagonItem[]): OctagonItem[][] => {
+  const pairs: OctagonItem[][] = [];
   for (let i = 0; i < items.length; i += 2) {
     pairs.push(items.slice(i, i + 2));
   }
@@ -47,7 +47,7 @@ const MusicVideoListPanel = ({ title, items }: MusicVideoListPanelProps) => {
               {pair.map((item) => (
                 <YoutubeEmbed
                   key={item.text}
-                  youtubeUrl={item.youtubeUrl}
+                  youtubeUrl={item.url ?? ''}
                   title={item.text}
                 />
               ))}

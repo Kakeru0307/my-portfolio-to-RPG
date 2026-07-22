@@ -1,7 +1,7 @@
 import { createLazyFileRoute } from '@tanstack/react-router';
 
 import FavoriteListPage from '@/components/organisms/FavoriteListPage';
-import { gameList } from '@/constants/game';
+import { gameSections } from '@/constants/game';
 import { message, Tips } from '@/constants/message';
 
 const Game = () => {
@@ -9,7 +9,7 @@ const Game = () => {
     <FavoriteListPage
       title="My Favorite Games"
       statusMessage={message.MyGameStatus}
-      sections={[{ heading: 'GAME LIST', items: gameList }]}
+      sections={gameSections}
       tips={Tips}
     />
   );

@@ -1,3 +1,5 @@
+import type { OctagonStatus } from '@/types/octagon';
+
 const STATUS_COLORS: Record<string, string> = {
   recent: 'bg-green-500',
   regular: 'bg-yellow-500',
@@ -7,7 +9,7 @@ const STATUS_COLORS: Record<string, string> = {
 
 type BWOctagonProps = {
   text: string;
-  status?: 'recent' | 'regular' | 'past';
+  status?: OctagonStatus;
   onClick?: () => void;
 };
 

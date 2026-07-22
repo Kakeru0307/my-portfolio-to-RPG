@@ -7,6 +7,7 @@ export const message = {
     '緑: 最近やってるよ\n黄: 定期的にやってるよ\n赤: もうあんまやってねぇな...',
   MyMusicStatus:
     '緑: 最近聞いてるね\n黄: 定期的に聞くな\n赤: そういや聞いてねぇな...',
+  LockedPage: 'このページはまだ解放されていないようだ...',
 };
 
 export const Tips = [

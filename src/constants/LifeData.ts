@@ -11,14 +11,9 @@ import {
   SiPython,
 } from 'react-icons/si';
 
-export type Life = {
-  description: string;
-  year: number;
-  month: number;
-  age: number;
-};
+import type { Life, SkillItem } from '@/types/life';
 
-export const skills = [
+export const skills: SkillItem[] = [
   { name: 'TypeScript', icon: SiTypescript },
   { name: 'JavaScript', icon: SiJavascript },
   { name: 'React', icon: SiReact },

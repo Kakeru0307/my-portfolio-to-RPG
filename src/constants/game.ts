@@ -1,4 +1,4 @@
-import { OctagonItem } from '@/types/octagon';
+import type { OctagonItem } from '@/types/octagon';
 
 export const gameList: OctagonItem[] = [
   { text: 'Valorant', status: 'regular' },
@@ -11,3 +11,5 @@ export const gameList: OctagonItem[] = [
   { text: 'AmoungUs', status: 'regular' },
   { text: 'SF6', status: 'recent' },
 ];
+
+export const gameSections = [{ heading: 'GAME LIST', items: gameList }];

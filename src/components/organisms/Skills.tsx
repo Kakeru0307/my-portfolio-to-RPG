@@ -1,9 +1,13 @@
 import { FaCogs } from 'react-icons/fa';
 
 import ProfileSectionCard from '@/components/molecules/ProfileSectionCard';
-import { skills } from '@/constants/LifeData';
+import type { SkillItem } from '@/types/life';
 
-const Skills = () => {
+type SkillsProps = {
+  skills: SkillItem[];
+};
+
+const Skills = ({ skills }: SkillsProps) => {
   return (
     <ProfileSectionCard icon={FaCogs} title="Skills">
       <div className="flex flex-wrap">
