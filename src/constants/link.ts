@@ -8,17 +8,7 @@ import {
 } from 'react-icons/fa';
 import { GiPerspectiveDiceSixFacesRandom } from 'react-icons/gi';
 
-export interface LinkItem {
-  title: string;
-  url: string;
-  icon: React.ElementType;
-  description: string;
-}
-
-export interface NavItem {
-  to: string;
-  label: string;
-}
+import type { LinkItem, NavItem } from '@/types/link';
 
 export const navItems: NavItem[] = [
   { to: '/', label: 'Home' },

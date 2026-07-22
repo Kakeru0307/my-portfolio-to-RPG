@@ -1,13 +1,9 @@
 import BWOctagon from '@/components/atoms/BWOctagon';
 import { OctagonItem } from '@/types/octagon';
 
-type OctagonGridItem = OctagonItem & {
-  url?: string;
-};
-
 type OctagonGridPanelProps = {
   title: string;
-  items: OctagonGridItem[];
+  items: OctagonItem[];
 };
 
 const openExternalUrl = (url: string) => {

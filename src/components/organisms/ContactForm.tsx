@@ -1,12 +1,6 @@
 import BWOctagon from '@/components/atoms/BWOctagon';
 import FormField from '@/components/molecules/FormField';
-
-type ContactFormValues = {
-  name: string;
-  email: string;
-  mainPurpose: string;
-  description: string;
-};
+import type { ContactFormValues } from '@/types/contact';
 
 type ContactFormProps = {
   values: ContactFormValues;

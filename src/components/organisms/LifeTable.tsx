@@ -5,7 +5,11 @@ import {
   useReactTable,
 } from '@tanstack/react-table';
 
-import { Life, LifeData } from '@/constants/LifeData';
+import type { Life } from '@/types/life';
+
+type LifeTableProps = {
+  data: Life[];
+};
 
 const columnHelper = createColumnHelper<Life>();
 
@@ -28,9 +32,9 @@ const columns = [
   }),
 ];
 
-const LifeTable = () => {
+const LifeTable = ({ data }: LifeTableProps) => {
   const table = useReactTable({
-    data: LifeData,
+    data,
     columns,
     getCoreRowModel: getCoreRowModel(),
   });

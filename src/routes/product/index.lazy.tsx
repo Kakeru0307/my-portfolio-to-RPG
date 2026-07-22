@@ -1,10 +1,11 @@
 import { createLazyFileRoute } from '@tanstack/react-router';
 
 import LockedPage from '@/components/organisms/LockedPage';
+import { message } from '@/constants/message';
 
-function Product() {
-  return <LockedPage />;
-}
+const Product = () => {
+  return <LockedPage message={message.LockedPage} />;
+};
 
 export const Route = createLazyFileRoute('/product/')({
   component: Product,

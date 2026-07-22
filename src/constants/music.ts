@@ -1,6 +1,9 @@
-import { ArtistItem, MusicItem } from '@/types/octagon';
+import type { OctagonItem } from '@/types/octagon';
 
-export const artistList: ArtistItem[] = [
+export const artistListTitle = 'ARTIST LIST';
+export const musicListTitle = 'MUSIC LIST';
+
+export const artistList: OctagonItem[] = [
   {
     text: 'Orangestar',
     status: 'regular',
@@ -48,50 +51,50 @@ export const artistList: ArtistItem[] = [
   },
 ];
 
-export const musicList: MusicItem[] = [
+export const musicList: OctagonItem[] = [
   {
     text: 'ソラニン',
     status: 'regular',
-    youtubeUrl: 'https://www.youtube.com/watch?v=XNURRmk8YrQ',
+    url: 'https://www.youtube.com/watch?v=XNURRmk8YrQ',
   },
   {
     text: 'ノーチラス',
     status: 'regular',
-    youtubeUrl: 'https://www.youtube.com/watch?v=j83OVgv6woA',
+    url: 'https://www.youtube.com/watch?v=j83OVgv6woA',
   },
   {
     text: 'Alice In 冷凍庫',
     status: 'regular',
-    youtubeUrl: 'https://www.youtube.com/watch?v=jQmYZWjLwzw',
+    url: 'https://www.youtube.com/watch?v=jQmYZWjLwzw',
   },
   {
     text: 'ともに',
     status: 'past',
-    youtubeUrl: 'https://www.youtube.com/watch?v=qag4ewos4TE',
+    url: 'https://www.youtube.com/watch?v=qag4ewos4TE',
   },
   {
     text: 'クラクラ',
     status: 'recent',
-    youtubeUrl: 'https://www.youtube.com/watch?v=W_fHWaoQwkw',
+    url: 'https://www.youtube.com/watch?v=W_fHWaoQwkw',
   },
   {
     text: 'Courage',
     status: 'recent',
-    youtubeUrl: 'https://www.youtube.com/watch?v=QizqLqGLork',
+    url: 'https://www.youtube.com/watch?v=QizqLqGLork',
   },
   {
     text: 'ANIMA',
     status: 'recent',
-    youtubeUrl: 'https://www.youtube.com/watch?v=Qo_4XqKwrSM',
+    url: 'https://www.youtube.com/watch?v=Qo_4XqKwrSM',
   },
   {
     text: 'カタオモイ',
     status: 'past',
-    youtubeUrl: 'https://www.youtube.com/watch?v=kxs9Su_mbpU',
+    url: 'https://www.youtube.com/watch?v=kxs9Su_mbpU',
   },
   {
     text: 'Soranji',
     status: 'past',
-    youtubeUrl: 'https://www.youtube.com/watch?v=44cICMd3jW4',
+    url: 'https://www.youtube.com/watch?v=44cICMd3jW4',
   },
 ];

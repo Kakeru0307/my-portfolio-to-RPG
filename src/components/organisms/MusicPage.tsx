@@ -3,19 +3,23 @@ import ChatMessage from '@/components/molecules/ChatMessage';
 import MusicVideoListPanel from '@/components/molecules/MusicVideoListPanel';
 import OctagonGridPanel from '@/components/molecules/OctagonGridPanel';
 import RandomTips from '@/components/organisms/RandomTips';
-import { ArtistItem, MusicItem } from '@/types/octagon';
+import { OctagonItem } from '@/types/octagon';
 
 type MusicPageProps = {
   title: string;
   statusMessage: string;
-  artists: ArtistItem[];
-  musics: MusicItem[];
+  artistsTitle: string;
+  musicsTitle: string;
+  artists: OctagonItem[];
+  musics: OctagonItem[];
   tips: string[];
 };
 
 const MusicPage = ({
   title,
   statusMessage,
+  artistsTitle,
+  musicsTitle,
   artists,
   musics,
   tips,
@@ -28,8 +32,8 @@ const MusicPage = ({
         <ChatMessage message={statusMessage} />
       </div>
 
-      <OctagonGridPanel title="ARTIST LIST" items={artists} />
-      <MusicVideoListPanel title="MUSIC LIST" items={musics} />
+      <OctagonGridPanel title={artistsTitle} items={artists} />
+      <MusicVideoListPanel title={musicsTitle} items={musics} />
 
       <RandomTips tips={tips} />
     </div>

@@ -1,6 +1,7 @@
-import { LinkItem } from '@/constants/link';
 import { Link } from '@tanstack/react-router';
 import { useState } from 'react';
+
+import type { LinkItem } from '@/types/link';
 
 interface ActiveFieldProps {
   linkItems: LinkItem[];

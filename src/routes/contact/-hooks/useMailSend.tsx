@@ -1,19 +1,16 @@
 import { useState } from 'react';
 
-type FormValues = {
-  name: string;
-  email: string;
-  mainPurpose: string;
-  description: string;
+import type { ContactFormValues } from '@/types/contact';
+
+const initialValues: ContactFormValues = {
+  name: '',
+  email: '',
+  mainPurpose: '',
+  description: '',
 };
 
 export const useMailSend = () => {
-  const [values, setValues] = useState<FormValues>({
-    name: '',
-    email: '',
-    mainPurpose: '',
-    description: '',
-  });
+  const [values, setValues] = useState<ContactFormValues>(initialValues);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (
@@ -44,11 +41,11 @@ export const useMailSend = () => {
 
       if (res.ok) {
         alert('送信しました！');
-        setValues({ name: '', email: '', mainPurpose: '', description: '' });
+        setValues(initialValues);
       } else {
         alert('送信エラー');
       }
-    } catch (e) {
+    } catch {
       alert('通信エラー');
     } finally {
       setIsSubmitting(false);
