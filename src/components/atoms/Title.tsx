@@ -1,13 +1,17 @@
 type TitleProps = {
-  name: String;
-  description?: String;
+  name: string;
+  description?: string;
 };
 
 const Title = ({ name, description }: TitleProps) => {
   return (
     <h1 className="text-4xl mb-8 mt-8 text-center">
       {name}
-      <br /> {description}
+      {description && (
+        <>
+          <br /> {description}
+        </>
+      )}
     </h1>
   );
 };

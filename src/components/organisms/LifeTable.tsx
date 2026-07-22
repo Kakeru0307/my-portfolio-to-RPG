@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {
   createColumnHelper,
   flexRender,
@@ -7,7 +5,7 @@ import {
   useReactTable,
 } from '@tanstack/react-table';
 
-import {Life, LifeData} from '@/constants/LifeData';
+import { Life, LifeData } from '@/constants/LifeData';
 
 const columnHelper = createColumnHelper<Life>();
 
@@ -30,7 +28,7 @@ const columns = [
   }),
 ];
 
-const LifeTable: React.FC = () => {
+const LifeTable = () => {
   const table = useReactTable({
     data: LifeData,
     columns,
